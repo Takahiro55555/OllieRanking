@@ -35,6 +35,7 @@ rename_url_full = front_url + "/rename/"
 
 @app.route("/push_data/" + data_push_link, methods=['GET'])
 def PushData():
+    global ranking
     def ReturnRandomHash(solt = 44124):
         #本来のsoltとは違うかも
         tmp = "hoge{}{}{}".format(random.randint(-10000, 10000), solt, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
@@ -66,7 +67,7 @@ def ShowRenameQrCode():
     ranking_len = len(ranking)
     for i in range(ranking_len):
         #一番最後に入ってきたプレイヤー情報のエントリー番号 == ranking配列の長さ
-        if ranking[i]["entry_num"] == ranking_len-1:
+        if ranking[i]["entry_num"] == ranking_len - 1:
             break    
     if (ranking[i]["score"] >= renameble_score):
         rename_url_full = front_url + "/rename/" + ranking[i]["rename_url"]
