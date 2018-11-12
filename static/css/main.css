@@ -1,0 +1,35 @@
+@charset 'utf-8';
+
+body{
+    padding: 10px;
+      background-color: #f5f5f5;
+    }
+
+/* 小デバイス（横向きモバイル, 576px 以上）*/
+@media (min-width: 576px) {
+  a.medal_img{
+    width: 30%;
+  }
+
+}
+    
+/* 中デバイス（タブレット, 768px 以上）*/
+@media (min-width: 768px) {
+  a.medal_img{
+    width: 50%;
+  }
+}
+    
+/* 大デバイス（デスクトップ, 992px 以上）*/
+@media (min-width: 992px) {
+  a.medal_img{
+    width: 30%;
+  }
+}
+    
+/* 特大デバイス（ワイド・デスクトップ, 1200px 以上）*/
+@media (min-width: 1200px) {
+  a.medal_img{
+    width: 50%;
+  }
+}

@@ -1,0 +1,36 @@
+{% extends "default_layout.html" %}
+{% block content %}
+<div class="container">
+    <h1>TOP3 RANKING</h1>
+    
+    <div class="row">
+        <div class="media col-12">
+            <a href="#" class="mr-3 medal_img"><img src="../static/medal1.png"></a>
+            <div class="media-body">
+                <p>名前：{{ ranking[0].name }}</p>
+                <p>ポイント：{{ ranking[0].score }}</p>
+            </div>
+        </div>
+        
+        <div class="media mt-3 col-12">
+            <a href="#" class="mr-3 medal_img"><img src="../static/medal2.png"></a>
+            <div class="media-body">
+                <p>名前：{{ ranking[1].name }}</p>
+                <p>ポイント：{{ ranking[1].score }}</p>
+            </div>
+        </div>
+
+        <div class="media mt-3 col-12">
+            <a href="#" class="mr-3 medal_img"><img src="../static/medal3.png"></a>
+            <div class="media-body">
+                <p>名前：{{ ranking[2].name }}</p>
+                <p>ポイント：{{ ranking[2].score }}</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

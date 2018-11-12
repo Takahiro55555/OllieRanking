@@ -1,0 +1,28 @@
+{% extends "default_layout.html" %}
+{% block content %}
+<div class="container">
+    <h1>TOP5 SCORE</h1>
+    <p></p>
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>順位</th><th>スコア</th><th>名前</th><th>時間</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for i in range(10) %}
+                <tr>
+                    <td>{{ i + 1 }}</td><td>{{ ranking[i].score }}</td><td>{{ ranking[i].name }}</td><td>{{ ranking[i].time_stamp }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+
+
+</div>
+
+
+{% endblock %}
