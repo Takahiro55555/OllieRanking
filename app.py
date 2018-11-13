@@ -31,7 +31,7 @@ renameble_score = 100
 qrcode_img_name = "/static/qrcode/qrcode.png"
 
 front_url = "http://127.0.0.1:5000"
-rename_url_full = front_url + "/rename/"
+rename_url_full = front_url + "/rename"
 
 
 @app.route("/push_data/" + data_push_link, methods=['GET'])
@@ -64,7 +64,7 @@ def PushData():
 @app.route("/show_rename_qr_code/" + show_rename_qr_code_link)
 def ShowRenameQrCode():
     global ranking
-    global  rename_url_full
+    global rename_url_full
     global qrcode_img_name
     ranking_len = len(ranking)
     for i in range(ranking_len):
@@ -76,20 +76,19 @@ def ShowRenameQrCode():
         qrcode_img = qrcode.make(rename_url_full)
         qrcode_img.save("." + qrcode_img_name)
         qrcode_img_path = qrcode_img_name + "?" + str(ranking[i]["receved_time_unix"])
-    return render_template("show_rename_qr_code.html", rename_url_full = rename_url_full, qrcode_img_path = qrcode_img_path)
-
-
+    return render_template("show_rename_qr_code.html", rename_url_full = rename_url_full, qrcode_img_path = qrcode_img_path, game_data = ranking[i])
 
 
 @app.route('/rename/<rename_url>')
 def rename(rename_url):
     global ranking
+    global rename_url_full
     print(rename_url)
     for i in range(len(ranking)):
         if ranking[i]["rename_url"] == rename_url:
             break
     if (ranking[i]["rename_url"] == rename_url and ranking[i]["name_edited"] == 0):
-        return render_template("rename.html", data = ranking[i])
+        return render_template("rename.html", data = ranking[i], rename_url_result = (rename_url_full + "/result"))
     else:
         return render_template("rename_error.html")
 
