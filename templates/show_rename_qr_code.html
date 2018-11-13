@@ -1,15 +1,10 @@
 <html>
   <head>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>    
-    <script type="text/JavaScript"> 
-    $(function(){
-      $("#coffee").html("");
-      $("#coffee").qrcode({text:{{ rename_url_full }} }); 
-    });
-    </script>
   </head>
   <body>
-    <div id="coffee"></div>
+    <img src={{qrcode_img_path}} class="" alt="名前変更用リンク" >
+    <p>
+      リンク：{{ rename_url_full }}
+    </p>
   </body>
 </html>

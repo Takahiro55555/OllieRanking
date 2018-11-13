@@ -1,7 +1,7 @@
 #-*- coding: utf-8 -*-
 
 from flask import Flask, render_template, request, url_for
-import json, time, random, hashlib
+import json, time, random, hashlib, qrcode
 from datetime import datetime
 
 app = Flask(__name__)
@@ -28,6 +28,7 @@ data_push_link = "fff2d2127188a272e7d87f9f5396e7d7"
 show_rename_qr_code_link = "77da6549b9ab3200490b2ed4d2a502d5"
 ranking = ReadData(file_name)
 renameble_score = 100
+qrcode_img_name = "/static/qrcode/qrcode.png"
 
 front_url = "http://127.0.0.1:5000"
 rename_url_full = front_url + "/rename/"
@@ -64,6 +65,7 @@ def PushData():
 def ShowRenameQrCode():
     global ranking
     global  rename_url_full
+    global qrcode_img_name
     ranking_len = len(ranking)
     for i in range(ranking_len):
         #一番最後に入ってきたプレイヤー情報のエントリー番号 == ranking配列の長さ
@@ -71,7 +73,13 @@ def ShowRenameQrCode():
             break    
     if (ranking[i]["score"] >= renameble_score):
         rename_url_full = front_url + "/rename/" + ranking[i]["rename_url"]
-    return render_template("show_rename_qr_code.html", rename_url_full = rename_url_full)
+        qrcode_img = qrcode.make(rename_url_full)
+        qrcode_img.save("." + qrcode_img_name)
+        qrcode_img_path = qrcode_img_name + "?" + str(ranking[i]["receved_time_unix"])
+    return render_template("show_rename_qr_code.html", rename_url_full = rename_url_full, qrcode_img_path = qrcode_img_path)
+
+
+
 
 @app.route('/rename/<rename_url>')
 def rename(rename_url):
