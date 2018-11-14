@@ -1,0 +1,48 @@
+{% extends "default_layout.html" %}
+{% block content %}
+<h1>検索結果</h1>
+    
+    {% for i in range(serch_result_len) %}
+    <p>
+        <font size="5">ニックネーム：</font>
+        <font size="7">
+            {{ serch_result[i].name }}
+        </font>
+    </p>
+    <p>
+        <font>順位：
+            {{ serch_result[i].rank }}
+        </font>
+    </p>
+    <p>
+        <font>スコア：
+            {{ serch_result[i].score }}
+        </font>
+    </p>
+    <p>
+        <font>エントリー番号：
+            {{ serch_result[i].entry_num }}
+        </font>
+    </p>
+    <p>
+        <font>
+            ゲーム終了時刻：
+            {{ serch_result[i].time_stamp }}
+        </font>
+    </p>
+    <p>
+        <font>
+            ニックネーム登録時間：
+            {{ serch_result[i].renamed_time }}
+        </font>
+    </p>
+    {% endfor %}
+
+    <p>
+        <a href={{ common_urls.ranking15_page }}>TOP15ランキング</a>
+    </p>
+    <p>
+        <a href={{ common_urls.top_page }}>トップページ</a>
+    </p>
+
+{% endblock %}

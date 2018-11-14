@@ -1,8 +1,14 @@
 {% extends "default_layout.html" %}
 {% block content %}
 <div class="container">
-    <h1>TOP5 SCORE</h1>
-    <p></p>
+    <h1>TOP15 SCORE</h1>
+    <p>
+        <form action={{common_urls.search_rank_page}} method="get">
+            エントリー番号：
+            <input type="text" name="word" placeholder="半角英数字"/>
+            <input type="submit" value="検索">
+        </form>
+    </p>
 
     <table class="table table-dark">
         <thead>
@@ -11,18 +17,16 @@
             </tr>
         </thead>
         <tbody>
-            {%for i in range(10) %}
+            {% for i in range(ranking_len) %}
                 <tr>
                     <td>{{ i + 1 }}</td><td>{{ ranking[i].score }}</td><td>{{ ranking[i].name }}</td><td>{{ ranking[i].time_stamp }}</td>
                 </tr>
             {% endfor %}
         </tbody>
-
-
     </table>
-
-
 </div>
 
-
+<script>
+        setTimeout("location.reload(true)", 15000);
+</script>
 {% endblock %}
