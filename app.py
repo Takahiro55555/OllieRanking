@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+#!/usr/bin/env python3
 
 from flask import Flask, render_template, request, url_for
 import json, time, random, hashlib, qrcode
@@ -32,7 +33,7 @@ renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
 
-front_url = "http://127.0.0.1:5000"
+front_url = "http://35.185.47.65:55555"
 rename_url_full = front_url + "/rename"
 common_urls = {"top_page": ""}
 common_urls["top_page"] = front_url
@@ -151,4 +152,6 @@ def SearchRank():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    #app.run(debug=True)
+    app.run(debug=False, host='0.0.0.0', port=55555)
+
