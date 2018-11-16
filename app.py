@@ -85,8 +85,7 @@ def ShowRenameQrCode():
 
 @app.route('/rename/<rename_url>')
 def rename(rename_url):
-    global ranking
-    global rename_url_full
+    global ranking, rename_url_full, common_urls
     print(rename_url)
     for i in range(len(ranking)):
         if ranking[i]["rename_url"] == rename_url:
@@ -94,11 +93,11 @@ def rename(rename_url):
     if (ranking[i]["rename_url"] == rename_url and ranking[i]["name_edited"] == 0):
         return render_template("rename.html", rename_url_result = rename_url_full + "/result", data = ranking[i], message = "")
     else:
-        return render_template("rename_error.html", data = ranking[i])
+        return render_template("rename_error.html", data = ranking[i], common_urls = common_urls)
 
 @app.route('/rename/<rename_url>/result', methods=['GET'])
 def RenameResult(rename_url):
-    global ranking, file_name
+    global ranking, file_name, common_urls
     name_len_max = 20
     print(rename_url)
     for i in range(len(ranking)):
@@ -122,7 +121,7 @@ def RenameResult(rename_url):
         data = []
         data.append(ranking[i])
         print(data)
-        return render_template("rename_error.html", data = data)
+        return render_template("rename_error.html", data = data, common_urls = common_urls)
 
 @app.route("/")
 def TopPage():

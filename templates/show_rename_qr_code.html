@@ -1,53 +1,64 @@
 <html>
   <head>
 
-    <script>
-      setTimeout("location.reload(true)", 1500);
-    </script>
+    <script>setTimeout("location.reload(true)", 1500);</script>
 
-    <link href="/static/css/main.css">
     <!-- Bootstrap CDN -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>                
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
 
+    <link href="/static/css/main.css">
+    
   </head>
   <body>
     <div class="container">
+      <p></p>
+      <h1>ニックネーム登録</h1>
       <div class="row">
         
-        <div class="col-6">
-            <p style="width: 100%; text-align: left">
-              <img src={{qrcode_img_path}} class="border img-fluid" alt="名前変更用リンク">
-            </p>
-            <p style="text-align: center"><a href={{rename_url_full}} target="_blank">名前変更ページ</a></p>
+        <div class="col-6 card">
+            <div class="card-body" style="width: 90%;">
+              <h5 class="card-title">QRコードを読み込んでください
+              </h5>
+                
+                <p style="text-align: center">
+                  <a href={{rename_url_full}} target="_blank">
+                    <img src={{qrcode_img_path}} class="border img-fluid" alt="名前変更用リンク">
+                  </a>
+                </p>
+            </div>
         </div>
         
-        <div class="col-6">
-          <p><font size="5"> エントリー番号：</font>
-             <font size="7"> {{game_data.entry_num}} </font></p>
-          
-          <p><font size="5">得点：</font>
-             <font size="7">{{game_data.score}}</font></p>
-          
-          <p><font size="5">順位：</font>
-             <font size="7">{{rank}}</font>
-             <font size="5">位</font></p>
-          
-          <p><font size="4">タイムスタンプ：{{game_data.time_stamp}}</font></p>
-          <p><font size="4">ニックネーム：{{game_data.name}}</font></p>
-          <p>
-            {% if game_data.name_edited == 1 %}
-             <font size="6" color="red">ニックネームが変更されました</font>
-            {% else %}
-              <font size="6">１度だけニックネームをつけることができます</font>      
-            {% endif %}
-          </p>
+        <div class="col-6 card"style="width: 90%;">
+        <div class="card-body" style="width: 90%">
+          <h2 class="card-title">ゲーム結果</h2>
+            <p><font size="5"> エントリー番号：</font>
+              <font size="7"> {{game_data.entry_num}} </font></p>
+           
+           <p><font size="5">得点：</font>
+              <font size="7">{{game_data.score}}</font></p>
+           
+           <p><font size="5">順位：</font>
+              <font size="7">{{rank}}</font>
+              <font size="5">位</font></p>
+           
+           <p><font size="4">タイムスタンプ：{{game_data.time_stamp}}</font></p>
+           <p><font size="4">ニックネーム：{{game_data.name}}</font></p>
+           <p>
+              <font size="5">ニックネーム</font>
+             {% if game_data.name_edited == 1 %}
+              <span size="5" class="badge badge-warning p-2">登録済</span>
+             {% else %}
+              <span size="5" class="badge badge-danger p-2 ">未登録</span>
+             {% endif %}
+           </p>
         </div>
-          
+        </div>
       </div>
     </div>
-  
+    <script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
   </body>
 
 </html>
