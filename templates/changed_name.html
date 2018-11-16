@@ -20,7 +20,7 @@
 <p><font>ニックネーム登録時間：{{data.renamed_time}}</font></p>
 <div　class="row" id="lanking-info">
         {% for i in range(ranking_len) %}
-        <div class="card class="col-12 clearfix">
+        <div class="card clearfix">
                     <h5 class="card-header" style="background: chocolate" data-toggle="collapse" data-target="#ac{{i+1}}">
                     <img class="card-img-top medal_size" src="/static/medal3.png" alt="カード画像">
                     {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>

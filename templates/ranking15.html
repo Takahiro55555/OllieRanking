@@ -11,7 +11,6 @@
     <title>Ollie Ranking</title>
 </head>
 <body style="padding-top:5rem">
-
     <div class="container">        <!-- 全体を囲むコンテナ -->
         <h1 class="mt-5">トップランキング
         </h1>
@@ -22,12 +21,12 @@
                     <input class="form-control mb-3 mr-sm-2" type="text" name="word" placeholder="エントリー番号" id="qword" size="14"/>
                     <button class="btn btn-primary mb-3" type="submit">検索</button>        
             </form>
-    </p>
-    <p>各ランキングをクリックすると詳細を確認できます。</p>
+        </p>
+        <p>各ランキングをクリックすると詳細を確認できます。</p>
     
     <div　class="row" id="lanking-info">
         {% for i in range(ranking_len) %}
-        <div class="card class="col-12 clearfix">
+        <div class="card">
                 {% if i == 0 %}
                     <h5 class="card-header" style="background: gold" data-toggle="collapse" data-target="#ac{{i+1}}">
                     <img class="card-img-top medal_size" src="/static/medal1.png" alt="カード画像">
@@ -43,7 +42,7 @@
                 {% else %}
                     <h5 class="card-header" style="background: powderblue" data-toggle="collapse" data-target="#ac{{i+1}}">
                     {{i+1}}位：{{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>                  
-                {% endif %}
+        {% endif %}
         </h5>
             <div class="collapse" id="ac{{i + 1}}" data-parent="#lanking-info">
                 <div class="card-body" style="background: gainsboro">    
