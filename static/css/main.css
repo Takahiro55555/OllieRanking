@@ -1,18 +1,22 @@
 @charset 'utf-8';
 
 body{
-    padding: 10px;
-      background-color: #f5f5f5;
-    }
+  padding: 100px;
+  background-color: #f5f5f5;
+}
+
+.qr_img{
+  width: 70%;
+  text-align: center;
+}
 
 /* 小デバイス（横向きモバイル, 576px 以上）*/
 @media (min-width: 576px) {
   a.medal_img{
     width: 30%;
   }
-
 }
-    
+
 /* 中デバイス（タブレット, 768px 以上）*/
 @media (min-width: 768px) {
   a.medal_img{
