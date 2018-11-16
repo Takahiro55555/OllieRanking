@@ -1,9 +1,4 @@
 #-*- coding: utf-8 -*-
-<<<<<<< HEAD
-#!/usr/bin/env python3
-
-=======
->>>>>>> master
 from flask import Flask, render_template, request, url_for
 import json, time, random, hashlib, qrcode
 from datetime import datetime
@@ -21,7 +16,7 @@ def ReadData(_file_name = 'test'):
     _file_name += '.json'
     with open(_file_name) as file:
         ranking = json.load(file)
-    print("read data from " + _file_name)
+    print("read data from " + _file_name)    
     return ranking
 
 
@@ -130,8 +125,11 @@ def RenameResult(rename_url):
 
 @app.route("/")
 def TopPage():
-    ranking = ReadData(file_name)
-    return render_template("top_page.html", ranking = ranking, common_urls = common_urls)
+    global ranking, common_urls
+    ranking_len = len(ranking)
+    if(ranking_len > 15):
+        ranking_len = 15
+    return render_template("ranking15.html", ranking=ranking, ranking_len = ranking_len, common_urls = common_urls)
 
 
 @app.route("/ranking15")
