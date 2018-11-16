@@ -1,35 +1,53 @@
 @charset 'utf-8';
 
 body{
-    padding: 10px;
-      background-color: #f5f5f5;
-    }
+  padding: 3%;
+  background-color: #f5f5f5;
+}
+
+.qr_img{
+  width: 70%;
+  text-align: center;
+}
+
+
+.test-box {
+  width:200px; 
+  text-align:center;
+  vertical-align: bottom;
+}
+
+@media (max-width: 577px) {
+  .medal_size{
+    width: 10%;
+  }
+  .sm_none {display:none}
+}
 
 /* 小デバイス（横向きモバイル, 576px 以上）*/
 @media (min-width: 576px) {
-  a.medal_img{
-    width: 30%;
+  .medal_size{
+    width: 8%;
   }
-
 }
-    
+
 /* 中デバイス（タブレット, 768px 以上）*/
 @media (min-width: 768px) {
-  a.medal_img{
-    width: 50%;
+  .medal_size{
+    width: 7%;
   }
 }
     
 /* 大デバイス（デスクトップ, 992px 以上）*/
 @media (min-width: 992px) {
-  a.medal_img{
-    width: 30%;
+  .medal_size{
+    width: 5%;
   }
 }
     
 /* 特大デバイス（ワイド・デスクトップ, 1200px 以上）*/
 @media (min-width: 1200px) {
-  a.medal_img{
-    width: 50%;
+  .medal_size{
+    width: 5%;
   }
 }

@@ -1,6 +1,42 @@
-{% extends "default_layout.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>GameRanking</title>
+
+        <!-- Bootstrap CDN -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>                
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
+
+
+        
+        <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+        <!--  -->
+    </head>
+    <body>
 <h1>確認</h1>
 <p><font size="5">ニックネーム：</font><font size="7">{{data.name}}</font></p>
 <p><font>ニックネーム登録時間：{{data.renamed_time}}</font></p>
-{% endblock %}
+<div　class="row" id="lanking-info">
+        {% for i in range(ranking_len) %}
+        <div class="card class="col-12 clearfix">
+                    <h5 class="card-header" style="background: chocolate" data-toggle="collapse" data-target="#ac{{i+1}}">
+                    <img class="card-img-top medal_size" src="/static/medal3.png" alt="カード画像">
+                    {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>
+        </h5>
+            <div class="collapse" id="ac{{i + 1}}" data-parent="#lanking-info">
+                <div class="card-body" style="background: gainsboro">    
+                    <p>スコア：{{ranking[i].score}}</p>
+                    <p>エントリー番号：{{ranking[i].entry_num}}</p>
+                    <p>ゲーム終了時刻：{{ranking[i].time_stamp}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

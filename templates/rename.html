@@ -1,9 +1,38 @@
-{% extends "default_layout.html" %}
-{% block content %}
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <title>Rename Page</title>
 
-<form action={{rename_url_result}} method="get">
-  <p>お名前：<input type="text" name="name" /></p>
-  <p><input type="submit" value="送信する"></p>
-</form>
+    <!-- Bootstrap CDN -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>                
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.bundle.min.js" integrity="sha384-pjaaA8dDz/5BgdFUPX6M/9SUZv4d12SUPF0axWc+VRZkx5xU3daN+lYb49+Ax+Tl" crossorigin="anonymous"></script>
 
-{% endblock %}
+    <link rel="stylesheet" type="text/css" href="/static/css/main.css">
+
+  </head>
+  <body>
+    <div class="container">
+      <h1>ニックネーム登録ページ</h1>
+      <div class="" style="padding-bottom: 20px">
+        <p class="text-danger">！！注意！！</p>
+        <li>ニックネームの変更は１度しか変更できません</li>
+      </div>
+      
+
+      <form action={{rename_url_result}} method="get">
+        <div class="from-group mb-4">
+          <label for="Q_Name">ニックネーム</label>
+          <input type="text" name="name" class="form-control form-control-lg"/>
+        </div>
+        <p class="text-danger">{{message}}</p>
+        
+        <button type="submit" class="btn btn-primary">送信</button>
+      </form>
+
+    </div>
+    <script src="/static/js/jquery-3.3.1.slim.min.js"></script>
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

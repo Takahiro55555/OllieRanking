@@ -1,6 +1,9 @@
 #-*- coding: utf-8 -*-
+<<<<<<< HEAD
 #!/usr/bin/env python3
 
+=======
+>>>>>>> master
 from flask import Flask, render_template, request, url_for
 import json, time, random, hashlib, qrcode
 from datetime import datetime
@@ -18,17 +21,17 @@ def ReadData(_file_name = 'test'):
     _file_name += '.json'
     with open(_file_name) as file:
         ranking = json.load(file)
-    print("read data from " + _file_name)    
+    print("read data from " + _file_name)
     return ranking
 
 
 # 排他制御!? ナニソレオイシイノ??????
 #golobal variables
-file_name = "test2"
+file_name = "test"
 data_push_link = "fff2d2127188a272e7d87f9f5396e7d7"
-show_rename_qr_code_link = "77da6549b9ab3200490b2ed4d2a502d5"
+show_rename_qr_code_link = "099070fec7cf3d742f267ddea06d6b40"
 ranking = ReadData(file_name)
-renameble_score = 100
+renameble_score = 400
 renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
@@ -41,13 +44,12 @@ common_urls["ranking15_page"] = front_url + "/" + "ranking15"
 common_urls["search_rank_page"] = front_url + "/" + "search_rank"
 
 
-
 @app.route("/push_data/" + data_push_link, methods=['GET'])
 def PushData():
     global ranking
     def ReturnRandomHash(solt = 44124):
         #本来のsoltとは違うかも
-        tmp = "hoge{}{}{}".format(random.randint(-10000, 10000), solt, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
+        tmp = "hoge{}{}".format(solt, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
         return str(hashlib.md5(tmp.encode()).hexdigest())
     def SortRanking(data):
         data.sort(key=lambda x: x["entry_num"])
@@ -88,32 +90,43 @@ def ShowRenameQrCode():
 
 @app.route('/rename/<rename_url>')
 def rename(rename_url):
-    global ranking
-    global rename_url_full
+    global ranking, rename_url_full, common_urls
     print(rename_url)
     for i in range(len(ranking)):
         if ranking[i]["rename_url"] == rename_url:
             break
     if (ranking[i]["rename_url"] == rename_url and ranking[i]["name_edited"] == 0):
-        return render_template("rename.html", data = ranking[i], rename_url_result = rename_url_full + "/result")
+        return render_template("rename.html", rename_url_result = rename_url_full + "/result", data = ranking[i], message = "")
     else:
-        return render_template("rename_error.html")
+        return render_template("rename_error.html", data = ranking[i], common_urls = common_urls)
 
 @app.route('/rename/<rename_url>/result', methods=['GET'])
 def RenameResult(rename_url):
-    global ranking, file_name
+    global ranking, file_name, common_urls
+    name_len_max = 20
     print(rename_url)
     for i in range(len(ranking)):
         if ranking[i]["rename_url"] == rename_url:
             break
     if (ranking[i]["rename_url"] == rename_url and ranking[i]["name_edited"] == 0):
-        ranking[i]["name"] = str(request.args.get("name"))
+        recv_name = str(request.args.get("name"))
+        recv_name = recv_name.strip()
+        recv_name_len = len(recv_name)
+        print("recv_name_len：{}".format(recv_name_len))
+        if name_len_max < recv_name_len or recv_name_len == 0:
+            rename_url_full = front_url + "/rename/" + rename_url
+            message = "ニックネームは{}字以上{}字以内にしてください".format(1, name_len_max)
+            return render_template("rename.html", rename_url_result = rename_url_full + "/result", message = message)
+        ranking[i]["name"] = recv_name
         ranking[i]["name_edited"] += 1
         ranking[i]["renamed_time"] = datetime.now().strftime("%Y/%m/%d %H:%M:%S")
         SaveData(ranking, file_name)
-        return render_template("rename_result.html", data = ranking[i], common_urls = common_urls)
+        return render_template("rename_result.html", common_urls = common_urls, data = ranking[i])
     else:
-        return render_template("rename_result_error.html", data = ranking[i])
+        data = []
+        data.append(ranking[i])
+        print(data)
+        return render_template("rename_error.html", data = data, common_urls = common_urls)
 
 @app.route("/")
 def TopPage():
