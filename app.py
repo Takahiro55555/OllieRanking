@@ -22,10 +22,12 @@ def ReadData(_file_name = 'test'):
 
 # 排他制御!? ナニソレオイシイノ??????
 #golobal variables
+common_file_name = "unifes_181117_18"
 file_name = "unifes_181118"
 data_push_link = "ef5f6d7c1800b39ca0414018dd0d5bcc"
 show_rename_qr_code_link = "099070fec7cf3d742f267ddea06d6b40"
 ranking = ReadData(file_name)
+common_ranking = ReadData(common_file_name)
 renameble_score = 100
 renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
@@ -63,8 +65,11 @@ def PushData():
     ranking = ReadData(file_name)
     result["entry_num"] = len(ranking)
     ranking.append(result)
+    common_ranking.append(result)
     ranking = SortRanking(ranking)
+    common_ranking = SortRanking(common_ranking)
     SaveData(ranking, file_name)
+    SaveData(common_ranking, common_file_name)
     return "receved data"
 
 @app.route("/show_rename_qr_code/" + show_rename_qr_code_link)
@@ -139,7 +144,15 @@ def Ranking15():
     ranking_len = len(ranking)
     if(ranking_len > 15):
         ranking_len = 15
-    return render_template("ranking15_auto_reload.html", ranking=ranking, ranking_len = ranking_len, common_urls = common_urls)
+    return render_template("ranking15_auto_reload.html", ranking=ranking, ranking_len=ranking_len, common_urls=common_urls)
+
+@app.route("/common_ranking15")
+def CommonRanking15():
+    global common_ranking, common_urls
+    ranking_len = len(common_ranking)
+    if(ranking_len > 15):
+        ranking_len = 15
+    return render_template("common_ranking15.html", ranking=common_ranking, ranking_len = ranking_len, common_urls = common_urls)
 
 @app.route("/search_rank", methods=['GET'])
 # @app.route("/ranking15/search_rank", methods=['GET'])
