@@ -22,11 +22,11 @@ def ReadData(_file_name = 'test'):
 
 # 排他制御!? ナニソレオイシイノ??????
 #golobal variables
-file_name = "test"
-data_push_link = "fff2d2127188a272e7d87f9f5396e7d7"
+file_name = "unifes_181117_18"
+data_push_link = "ef5f6d7c1800b39ca0414018dd0d5bcc"
 show_rename_qr_code_link = "099070fec7cf3d742f267ddea06d6b40"
 ranking = ReadData(file_name)
-renameble_score = 400
+renameble_score = 300
 renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
