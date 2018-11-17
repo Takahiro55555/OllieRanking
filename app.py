@@ -26,7 +26,7 @@ file_name = "unifes_181117_18"
 data_push_link = "ef5f6d7c1800b39ca0414018dd0d5bcc"
 show_rename_qr_code_link = "099070fec7cf3d742f267ddea06d6b40"
 ranking = ReadData(file_name)
-renameble_score = 300
+renameble_score = 100
 renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
@@ -165,5 +165,5 @@ def SearchRank():
 
 if __name__ == '__main__':
     #app.run(debug=True)
-    app.run(debug=True, host='127.0.0.1', port=50000)
+    app.run(debug=False, host='0.0.0.0', port=55555)
 
