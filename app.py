@@ -33,8 +33,8 @@ renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
 
-front_url = "http://dotcube.moyasi.jp:55555"
-#front_url = "http://127.0.0.1:55555"
+#front_url = "http://dotcube.moyasi.jp:55555"
+front_url = "http://127.0.0.1:55555"
 rename_url_full = front_url + "/rename"
 common_urls = {"top_page": ""}
 common_urls["top_page"] = front_url
@@ -169,6 +169,10 @@ def SearchRank():
             serch_result.append(common_ranking[i])
             serch_result[len(serch_result)-1]["rank"] = i + 1
 
+    for i in range(ranking_len):
+        if str(common_ranking[i]["name"]) == serch_words[0]:
+            serch_result.append(common_ranking[i])
+            serch_result[len(serch_result)-1]["rank"] = i + 1
     serch_result_len = len(serch_result)
     if serch_result_len == 0:
         tmp = {"name": "該当なし", "rank": "---", "time_stamp": "---", "renamed_time": "---", "score": "---"}
@@ -179,5 +183,5 @@ def SearchRank():
 
 if __name__ == '__main__':
     #app.run(debug=True)
-    app.run(debug=False, host='0.0.0.0', port=55555)
+    app.run(debug=True, host='127.0.0.1', port=55555)
 
