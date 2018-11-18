@@ -30,7 +30,7 @@
                 {% if i == 0 %}
                     <h3 class="card-header" style="background: gold" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
                     <img class="card-img-top medal_size" src="/static/medal1.png" alt="カード画像">
-                    {{ranking[i].name}}<a class="sm_none float-right test-box" >：{{ranking[i].score}}点</a>
+                    {{ranking[i].name}}<a class="sm_none float-right test-box" >{{ranking[i].score}}点</a>
 		    </h3>
                 {% elif i == 1 %}
                     <h3 class="card-header" style="background: silver" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">

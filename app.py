@@ -178,10 +178,12 @@ def SearchRank():
         tmp = {"name": "該当なし", "rank": "---", "time_stamp": "---", "renamed_time": "---", "score": "---"}
         serch_result.append(tmp)
         serch_result_len = len(serch_result)
-    return render_template("search_rank.html", serch_result = serch_result, common_urls = common_urls, serch_result_len = serch_result_len, )
+    return render_template("search_rank.html", serch_result = serch_result, common_urls = common_urls, serch_result_len = serch_result_len, serch_words = serch_words)
 
 
 if __name__ == '__main__':
     #app.run(debug=True)
+    #app.run(debug=False, host='0.0.0.0', port=55555)
     app.run(debug=True, host='127.0.0.1', port=55555)
+
 
