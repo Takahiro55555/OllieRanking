@@ -25,7 +25,7 @@ def ReadData(_file_name = 'test'):
 common_file_name = "unifes_181117_18"
 file_name = "unifes_181118"
 data_push_link = "ef5f6d7c1800b39ca0414018dd0d5bcc"
-show_rename_qr_code_link = "099070fec7cf3d742f267ddea06d6b40"
+show_rename_qr_code_link = "099070fec7cf3d742f2677dea06d6b40"
 ranking = ReadData(file_name)
 common_ranking = ReadData(common_file_name)
 renameble_score = 100
@@ -33,18 +33,19 @@ renameble_score_index = 0
 qrcode_img_name = "/static/qrcode/qrcode.png"
 qrcode_img_path = qrcode_img_name
 
-front_url = "http://35.185.47.65:55555"
-#front_url = "http://127.0.0.1:55555"
+#front_url = "http://dotcube.moyasi.jp:55555"
+front_url = "http://127.0.0.1:55555"
 rename_url_full = front_url + "/rename"
 common_urls = {"top_page": ""}
 common_urls["top_page"] = front_url
 common_urls["ranking15_page"] = front_url + "/" + "ranking15"
 common_urls["search_rank_page"] = front_url + "/" + "search_rank"
+common_urls["common_ranking15"] = front_url + "/" + "common_ranking15"
 
 
 @app.route("/push_data/" + data_push_link, methods=['GET'])
 def PushData():
-    global ranking
+    global ranking, common_ranking
     def ReturnRandomHash(solt = 44124):
         #本来のsoltとは違うかも
         tmp = "hoge{}{}".format(solt, datetime.now().strftime("%Y/%m/%d %H:%M:%S"))
@@ -157,17 +158,17 @@ def CommonRanking15():
 @app.route("/search_rank", methods=['GET'])
 # @app.route("/ranking15/search_rank", methods=['GET'])
 def SearchRank():
-    global ranking, common_urls
+    global ranking, common_urls, common_ranking
     serch_result = []
     serch_words = []
-    ranking_len = len(ranking)
+    ranking_len = len(common_ranking)
     serch_words.append(request.args.get("word"))
     print(serch_words)
     for i in range(ranking_len):
-        if str(ranking[i]["entry_num"]) == serch_words[0]:
-            serch_result.append(ranking[i])
+        if str(common_ranking[i]["entry_num"]) == serch_words[0]:
+            serch_result.append(common_ranking[i])
             serch_result[len(serch_result)-1]["rank"] = i + 1
-            break
+
     serch_result_len = len(serch_result)
     if serch_result_len == 0:
         tmp = {"name": "該当なし", "rank": "---", "time_stamp": "---", "renamed_time": "---", "score": "---"}
@@ -178,5 +179,5 @@ def SearchRank():
 
 if __name__ == '__main__':
     #app.run(debug=True)
-    app.run(debug=False, host='0.0.0.0', port=55555)
+    app.run(debug=True, host='127.0.0.1', port=55555)
 

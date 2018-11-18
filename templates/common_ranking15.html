@@ -11,10 +11,9 @@
     <title>Ollie Ranking</title>
 </head>
 <body style="padding-top:5rem">
+
     <div class="container">        <!-- 全体を囲むコンテナ -->
-        <h1 class="mt-5">総合ランキング
-        </h1>
-        
+        <h1 class="mt-5">総合ランキング</h1>
         <p>
             <form class="form-inline justify-content-end md-5" action="{{common_urls.search_rank_page}}" method="get">
                     <label class="sr-only" for="qword">エントリー番号</label>
@@ -23,30 +22,29 @@
             </form>
         </p>
         <p>各ランキングをクリックすると詳細を確認できます。</p>
-    
-    <div　class="row" id="lanking-info">
-        {% for i in range(ranking_len) %}
-        <div class="card">
-                {% if i == 0 %}
-                    <h3 class="card-header" style="background: gold" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
-                    <img class="card-img-top medal_size" src="/static/medal1.png" alt="カード画像">
-                    {{ranking[i].name}}<a class="sm_none float-right test-box" >合計点：{{ranking[i].score}}点</a>
-		    </h3>
-                {% elif i == 1 %}
-                    <h3 class="card-header" style="background: silver" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
-                    <img class="card-img-top medal_size" src="/static/medal2.png" alt="カード画像">
-                    {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>
-		    </h3>
-                {% elif i == 2 %}
-                    <h3 class="card-header" style="background: chocolate" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
-                    <img class="card-img-top medal_size" src="/static/medal3.png" alt="カード画像">
-                    {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>
-		    </h3>
-                {% else %}
-                    <h5 class="card-header" style="background: powderblue" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
-                    {{i+1}}位：{{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>                  
-		    </h5>
-        {% endif %}
+        <div　class="row" id="lanking-info">
+            {% for i in range(ranking_len) %}
+                <div class="card">
+                    {% if i == 0 %}
+                        <h3 class="card-header" style="background: gold" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
+                        <img class="card-img-top medal_size" src="/static/medal1.png" alt="カード画像">
+                        {{ranking[i].name}}<a class="sm_none float-right test-box" >合計点：{{ranking[i].score}}点</a>
+		                </h3>
+                    {% elif i == 1 %}
+                        <h3 class="card-header" style="background: silver" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
+                        <img class="card-img-top medal_size" src="/static/medal2.png" alt="カード画像">
+                        {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>
+		                </h3>
+                    {% elif i == 2 %}
+                        <h3 class="card-header" style="background: chocolate" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
+                        <img class="card-img-top medal_size" src="/static/medal3.png" alt="カード画像">
+                        {{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>
+		                </h3>
+                    {% else %}
+                        <h5 class="card-header" style="background: powderblue" data-toggle="collapse" data-target="#ac{{i+1}}" href="#ac{{i+1}}">
+                        {{i+1}}位：{{ranking[i].name}}<a class="sm_none float-right test-box">合計点：{{ranking[i].score}}点</a>                  
+		                </h5>
+                    {% endif %}
         
             <div class="collapse" id="ac{{i + 1}}" data-parent="#lanking-info">
                 <div class="card-body" style="background: gainsboro">    
@@ -57,7 +55,12 @@
             </div>
         </div>
         {% endfor %}  
-    </div>
+        </div>
+
+        <div class="row" style="padding-top: 5%">
+            <div class="col-12">
+            </div>
+        </div>
 
     <div class="card border-success my-5">
         <h6 class="card-header bg-success text-white">ABOUT US</h6>
@@ -66,6 +69,7 @@
             <p>活動日　毎週火曜 16:40〜</p>
             <p>場所　図書館１階セミナールーム１</p>
             <p>新入部員募集中！！</p>
+            <a class="btn btn-primary" href="{{common_urls.top_page}}">デイリーランキング</a>
             <a class="btn btn-info" href="https://twitter.com/m_dotcube" target="_blank">Twitter</a>
             <a class="btn btn-info" href="https://myzk-int.github.io/" target="_blank">イベント</a>
         </div>
