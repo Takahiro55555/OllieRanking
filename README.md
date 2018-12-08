@@ -1,6 +1,6 @@
 # Ollie Ranking
 
-<img src="sample/ollie_top_image.jpg" style="width: 70%;">
+<img src="sample/ollie_top_image.jpg">
 
 ## Ollie Ranking
 
@@ -14,7 +14,7 @@ dot cube
 このシステムは、大学祭での展示を前提に制作しました。
 
 ### 機能
-主に以下の３つの機能があります。
+主に以下の4つの機能があります。
 
 1. ランキング表示機能
 2. スコアデータ受信機能
@@ -29,7 +29,7 @@ dot cube
 iOS
 端末での不具合を確認しています。）
 
-<img src="sample/ranking_main_pc.gif" style="width: 70%;">
+<img src="sample/ranking_main_pc.gif">
 
 #### 2. スコアデータ受信機能
 GET
@@ -63,7 +63,7 @@ URL
 
 だたしニックネームでの検索の場合、ニックネームを正確に入力しないと検索できません。またエントリー番号から検索する際は、半角数字で入力してください。
 
-<img src="sample/ranking_search_pc.gif" style="width: 70%;">
+<img src="sample/ranking_search_pc.gif">
 
 
 ## 実行環境
@@ -78,7 +78,7 @@ URL
     
     * Flask 1.0.2
 
-* 使用モジュール*
+* 使用モジュール
 
     * datetime
     * time
@@ -94,8 +94,6 @@ URL
     、メモリ
      1.7 GB）
 
-*Flask
-内蔵モジュールを除く
 
 <!--
 ## 使用方法
