@@ -1,5 +1,7 @@
 # Ollie Ranking
 
+<img src="sample/ollie_top_image.jpg" style="width: 70%;">
+
 ## Ollie Ranking
 
 宮崎大学
