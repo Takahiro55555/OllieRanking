@@ -13,6 +13,8 @@ dot cube
 
 このシステムは、大学祭での展示を前提に制作しました。
 
+
+
 ### 機能
 主に以下の4つの機能があります。
 
@@ -29,7 +31,7 @@ dot cube
 iOS
 端末での不具合を確認しています。）
 
-<img src="sample/ranking_main_pc.gif">
+<img src="sample/ranking_main_pc_mini.gif">
 
 #### 2. スコアデータ受信機能
 GET
@@ -63,7 +65,7 @@ URL
 
 だたしニックネームでの検索の場合、ニックネームを正確に入力しないと検索できません。またエントリー番号から検索する際は、半角数字で入力してください。
 
-<img src="sample/ranking_search_pc.gif">
+<img src="sample/ranking_search_pc_mini.gif">
 
 
 ## 実行環境
